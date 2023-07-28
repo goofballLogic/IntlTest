@@ -75,7 +75,7 @@
             
             el.form.addEventListener("submit", handleFormSubmit);
             el.form.locales.value = navigator.languages.join(", ");
-            el.form.datetime.value = new Date().toLocaleString();
+            el.form.datetime.value = new Date().toString();
 
             function handleFormSubmit(e) {
 
