@@ -130,7 +130,7 @@
                         <option></option>
                         <option>full</option>
                         <option>long</option>
-                        <option>>medium</option>
+                        <option>medium</option>
                         <option>short</option>
 
                     </select>
@@ -144,7 +144,7 @@
                         <option></option>
                         <option>full</option>
                         <option>long</option>
-                        <option>>medium</option>
+                        <option>medium</option>
                         <option>short</option>
 
                     </select>
@@ -340,6 +340,7 @@
                 </label>
 
             </fieldset>
+            <output id="errors"></output>
             <output id="formatted"></output>
             <output id="parts"></output>
 
@@ -359,6 +360,8 @@
             format: "form [name=format]",
             formatted: "form #formatted",
             parts: "form #parts",
+            errors: "form #errors",
+
             options_year: "form select[name=year]",
             options_month: "form select[name=month]",
             options_day: "form select[name=day]",
@@ -390,33 +393,41 @@
 
         function execute() {
 
-            const locales = el.locales.value.split(",").map(x => x.trim());
-            const datetime = new Date(el.datetime.value);
-            const optionsText = `{
+            try {
+                const locales = el.locales.value.split(",").map(x => x.trim());
+                const datetime = new Date(el.datetime.value);
+                const optionsText = `{
                 ${Object.entries(el)
-                    .filter(([key]) => key.startsWith("options_"))
-                    .map(([name, field]) => [
-                        name.substring(8),
-                        field.value
-                    ])
-                    .filter(([, value]) => !!value)
-                    .map(([name, value]) => `${name}: "${value}"`)
-                    .join(",\n")
-                }
+                        .filter(([key]) => key.startsWith("options_"))
+                        .map(([name, field]) => [
+                            name.substring(8),
+                            field.value
+                        ])
+                        .filter(([, value]) => !!value)
+                        .map(([name, value]) => `${name}: "${value}"`)
+                        .join(",\n")
+                    }
             }`;
 
-            console.log(optionsText);
-            const options = eval(`(${optionsText})`);
-            const format = Intl.DateTimeFormat(locales, options);
-            el.formatted.textContent = format.format(datetime);
-            const parts = format.formatToParts(datetime);
-            el.parts.innerHTML = "";
-            parts.forEach(part => {
+                console.log(optionsText);
+                const options = eval(`(${optionsText})`);
+                const format = Intl.DateTimeFormat(locales, options);
+                el.formatted.textContent = format.format(datetime);
+                const parts = format.formatToParts(datetime);
+                el.parts.innerHTML = "";
+                parts.forEach(part => {
 
-                for (const key in part)
-                    el.parts.innerHTML += `${key}: ${part[key]}<br />`;
+                    for (const key in part)
+                        el.parts.innerHTML += `${key}: ${part[key]}<br />`;
 
-            });
+                });
+                el.errors.textContent = "";
+
+            } catch (err) {
+
+                el.errors.textContent = err.stack;
+
+            }
 
         }
 
