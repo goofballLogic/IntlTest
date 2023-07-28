@@ -78,7 +78,7 @@
             <button>Go</button>
             <output id="formatted" />
             <output id="parts" />
-            
+
         </form>
     </main>
     <footer>
@@ -109,6 +109,12 @@
         function handleFormSubmit(e) {
 
             e.preventDefault();
+            execute();
+
+        }
+        
+        function execute() {
+
             const locales = el.locales.value.split(",").map(x => x.trim());
             const datetime = new Date(el.datetime.value);
             const format = Intl.DateTimeFormat(locales);
@@ -118,7 +124,10 @@
 
                 el.parts.textContent += `${key}: ${parts[key]}<br />`;
             }
+
         }
+
+        execute();
 
     </script>
 </body>
