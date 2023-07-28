@@ -335,7 +335,7 @@
             }`;
 
             console.log(optionsText);
-            const options = eval(optionsText);
+            const options = eval(`(${optionsText})`);
             const format = Intl.DateTimeFormat(locales, options);
             el.formatted.textContent = format.format(datetime);
             const parts = format.formatToParts(datetime);
