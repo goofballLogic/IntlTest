@@ -158,88 +158,88 @@
                     </select>
 
                 </label>
-            
+
             </fieldset>
             <fieldset>
-                
+
                 <label>
 
                     <span>hour</span>
                     <select name="hour">
-                    
+
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
-                    
+
                     </select>
-                
+
                 </label>
                 <label>
-                
+
                     <span>minute</span>
                     <select name="minute">
-                
+
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
-                
+
                     </select>
-                
+
                 </label>
                 <label>
-                
+
                     <span>second</span>
                     <select name="second">
-                
+
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
-                
+
                     </select>
-                
+
                 </label>
-            
+
             </fieldset>
             <fieldset>
-            
+
                 <label>
-            
+
                     <span>dayPeriod</span>
                     <select name="dayPeriod">
-            
+
                         <option></option>
                         <option>narrow</option>
                         <option>short</option>
                         <option>long</option>
-            
+
                     </select>
-            
+
                 </label>
                 <label>
-            
+
                     <span>weekday</span>
                     <select name="weekday">
-            
+
                         <option></option>
                         <option>narrow</option>
                         <option>short</option>
                         <option>long</option>
-            
+
                     </select>
-            
+
                 </label>
                 <label>
-                    
+
                     <span>fractionalSecondDigits</span>
                     <select name="fractionalSecondDigits">
-                    
+
                         <option></option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
-                    
+
                     </select>
-                
+
                 </label>
 
             </fieldset>
@@ -259,10 +259,10 @@
 
                 </label>
                 <label>
-                
+
                     <span>timeZoneName</span>
                     <select name="timeZoneName">
-                
+
                         <option></option>
                         <option>short</option>
                         <option>long</option>
@@ -270,9 +270,9 @@
                         <option>longOffset</option>
                         <option>shortGeneric</option>
                         <option>longGeneric</option>
-                
+
                     </select>
-                
+
                 </label>
 
             </fieldset>
@@ -294,7 +294,18 @@
             datetime: "form [name=datetime]",
             format: "form [name=format]",
             formatted: "form #formatted",
-            parts: "form #parts"
+            parts: "form #parts",
+            options_year: "form select[name=year]",
+            options_month: "form select[name=month]",
+            options_day: "form select[name=day]",
+            options_hour: "form select[name=hour]",
+            options_minute: "form select[name=minute]",
+            options_second: "form select[name=second]",
+            options_dayPeriod: "form select[name=dayPeriod]",
+            options_weekday: "form select[name=weekday]",
+            options_fractionalSecondDigits: "form select[name=fractionalSecondDigits]",
+            options_era: "form select[name=era]",
+            options_timeZoneName: "form select[name=timeZoneName]"
 
         }).reduce((el, [key, value]) => ({ ...el, [key]: document.querySelector(value) }), {});
 
@@ -313,7 +324,13 @@
 
             const locales = el.locales.value.split(",").map(x => x.trim());
             const datetime = new Date(el.datetime.value);
-            const format = Intl.DateTimeFormat(locales);
+            const options = Object.fromEntries(
+                Object.entries()
+                    .filter(([key]) => key.startsWith("option_"))
+                    .map(([name, field]) => [name, field])
+            );
+            console.log(options);
+            const format = Intl.DateTimeFormat(locales, options);
             el.formatted.textContent = format.format(datetime);
             const parts = format.formatToParts(datetime);
             el.parts.innerHTML = "";
