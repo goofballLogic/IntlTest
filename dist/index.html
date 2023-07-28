@@ -71,7 +71,7 @@
         
         label > span {
 
-            width: 20rem;
+            width: 10rem;
         
         }
 
@@ -125,7 +125,7 @@
                 </select>
             </label>
             <label>
-                <span>day</span>
+                <span>dayPeriod</span>
                 <select name="dayPeriod">
                     <option></option>
                     <option>narrow</option>
@@ -226,7 +226,7 @@
 
             const locales = el.locales.value.split(",").map(x => x.trim());
             const datetime = new Date(el.datetime.value);
-            const format = Intl.DateTimeFormat(locales, el.format.value);
+            const format = Intl.DateTimeFormat(locales);
             el.formatted.textContent = format.format(datetime);
             const parts = format.formatToParts(datetime);
             el.parts.innerHTML = "";
