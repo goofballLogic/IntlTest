@@ -43,6 +43,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 2px;
+            align-items: center;
 
         }
 
@@ -61,7 +62,6 @@
         form output {
 
             flex: 0 0 100%
-            
         }
 
         form input {
@@ -118,95 +118,141 @@
             <fieldset>
 
                 <label>
-                    <span>era</span>
-                    <select name="era">
-                        <option></option>
-                        <option>narrow</option>
-                        <option>short</option>
-                        <option>long</option>
-                    </select>
-                </label>
-                <label>
+
                     <span>year</span>
                     <select name="year">
+
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
+
                     </select>
+
                 </label>
                 <label>
+
                     <span>month</span>
                     <select name="month">
+
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
                         <option>narrow</option>
                         <option>short</option>
                         <option>long</option>
+
                     </select>
+
                 </label>
                 <label>
+
                     <span>day</span>
                     <select name="day">
+
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
+
                     </select>
+
                 </label>
                 <label>
-                    <span>dayPeriod</span>
-                    <select name="dayPeriod">
-                        <option></option>
-                        <option>narrow</option>
-                        <option>short</option>
-                        <option>long</option>
-                    </select>
-                </label>
-                <label>
-                    <span>weekday</span>
-                    <select name="weekday">
-                        <option></option>
-                        <option>narrow</option>
-                        <option>short</option>
-                        <option>long</option>
-                    </select>
-                </label>
-                <label>
+
                     <span>hour</span>
                     <select name="hour">
+                    
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
+                    
                     </select>
+                
                 </label>
                 <label>
+                
                     <span>minute</span>
                     <select name="minute">
+                
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
+                
                     </select>
+                
                 </label>
                 <label>
+                
                     <span>second</span>
                     <select name="second">
+                
                         <option></option>
                         <option>2-digit</option>
                         <option>numeric</option>
+                
                     </select>
+                
+                </label>
+            
+            </fieldset>
+            <fieldset>
+            
+                <label>
+
+                    <span>era</span>
+                    <select name="era">
+
+                        <option></option>
+                        <option>narrow</option>
+                        <option>short</option>
+                        <option>long</option>
+
+                    </select>
+
                 </label>
                 <label>
+            
+                    <span>dayPeriod</span>
+                    <select name="dayPeriod">
+            
+                        <option></option>
+                        <option>narrow</option>
+                        <option>short</option>
+                        <option>long</option>
+            
+                    </select>
+            
+                </label>
+                <label>
+            
+                    <span>weekday</span>
+                    <select name="weekday">
+            
+                        <option></option>
+                        <option>narrow</option>
+                        <option>short</option>
+                        <option>long</option>
+            
+                    </select>
+            
+                </label>
+                <label>
+                    
                     <span>fractionalSecondDigits</span>
                     <select name="fractionalSecondDigits">
+                    
                         <option></option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
+                    
                     </select>
+                
                 </label>
                 <label>
+                
                     <span>timeZoneName</span>
                     <select name="timeZoneName">
+                
                         <option></option>
                         <option>short</option>
                         <option>long</option>
@@ -214,8 +260,11 @@
                         <option>longOffset</option>
                         <option>shortGeneric</option>
                         <option>longGeneric</option>
+                
                     </select>
+                
                 </label>
+            
             </fieldset>
             <output id="formatted"></output>
             <output id="parts"></output>
