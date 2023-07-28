@@ -343,6 +343,7 @@
             <output id="errors"></output>
             <output id="formatted"></output>
             <output id="parts"></output>
+            <pre id="code"></pre>
 
         </form>
     </main>
@@ -361,6 +362,7 @@
             formatted: "form #formatted",
             parts: "form #parts",
             errors: "form #errors",
+            code: "form #code",
 
             options_year: "form select[name=year]",
             options_month: "form select[name=month]",
@@ -409,7 +411,7 @@
                     }
             }`;
 
-                console.log(optionsText);
+                el.code.textContent = optionsText;
                 const options = eval(`(${optionsText})`);
                 const format = Intl.DateTimeFormat(locales, options);
                 el.formatted.textContent = format.format(datetime);
