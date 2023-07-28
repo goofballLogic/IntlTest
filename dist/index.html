@@ -77,7 +77,8 @@
             <input type="text" name="datetime" placeholder="value" />
             <button>Go</button>
             <output id="formatted" />
-
+            <output id="parts" />
+            
         </form>
     </main>
     <footer>
@@ -91,7 +92,8 @@
             form: "form",
             locales: "form [name=locales]",
             datetime: "form [name=datetime]",
-            formatted: "form #formatted"
+            formatted: "form #formatted",
+            parts: "form #parts"
 
         };
         Object.entries(el).forEach(([key, value]) => {
@@ -109,8 +111,13 @@
             e.preventDefault();
             const locales = el.locales.value.split(",").map(x => x.trim());
             const datetime = new Date(el.datetime.value);
-            el.formatted.textContent = new Intl.DateTimeFormat(locales).format(datetime);
+            const format = Intl.DateTimeFormat(locales);
+            el.formatted.textContent = format.format(datetime);
+            const parts = format.formatToParts(datetime);
+            for(const key in parts) {
 
+                el.parts.textContent += `${key}: ${parts[key]}<br />`;
+            }
         }
 
     </script>
