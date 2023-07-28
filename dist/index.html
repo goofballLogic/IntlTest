@@ -75,6 +75,7 @@
 
             <input type="text" name="locales" placeholder="locales" />
             <input type="text" name="datetime" placeholder="value" />
+            <input type="text" nane="string" placeholder="format" />
             <button>Go</button>
             <output id="formatted"></output>
             <output id="parts"></output>
@@ -87,20 +88,16 @@
 
     <script>
 
-        const el = {
+        const el = Object.entries({
 
             form: "form",
             locales: "form [name=locales]",
             datetime: "form [name=datetime]",
+            format: "form [name=format]",
             formatted: "form #formatted",
             parts: "form #parts"
 
-        };
-        Object.entries(el).forEach(([key, value]) => {
-
-            el[key] = document.querySelector(value);
-
-        });
+        }).reduce((el, [key, value]) => ({ ...el, [key]: document.querySelector(value) }), {});
 
         el.form.addEventListener("submit", handleFormSubmit);
         el.form.locales.value = navigator.languages.join(", ");
@@ -117,7 +114,7 @@
 
             const locales = el.locales.value.split(",").map(x => x.trim());
             const datetime = new Date(el.datetime.value);
-            const format = Intl.DateTimeFormat(locales);
+            const format = Intl.DateTimeFormat(locales, el.format.value);
             el.formatted.textContent = format.format(datetime);
             const parts = format.formatToParts(datetime);
             el.parts.innerHTML = "";
