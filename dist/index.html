@@ -120,11 +120,14 @@
             const format = Intl.DateTimeFormat(locales);
             el.formatted.textContent = format.format(datetime);
             const parts = format.formatToParts(datetime);
-            for(const key in parts) {
+            el.parts.innerHTML = "";
+            parts.forEach(part => {
 
-                el.parts.textContent += `${key}: ${parts[key]}<br />`;
-            }
+                for(const key in part)
+                    el.parts.innerHTML += `${key}: ${part[key]}<br />`;
 
+            });
+        
         }
 
         execute();
