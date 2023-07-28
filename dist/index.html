@@ -310,6 +310,7 @@
         }).reduce((el, [key, value]) => ({ ...el, [key]: document.querySelector(value) }), {});
 
         el.form.addEventListener("submit", handleFormSubmit);
+        el.form.addEventListener("change", () => execute());
         el.form.locales.value = navigator.languages.join(", ");
         el.form.datetime.value = new Date().toISOString();
 
