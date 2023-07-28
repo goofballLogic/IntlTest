@@ -76,13 +76,13 @@
             el.form.addEventListener("submit", handleFormSubmit);
             el.form.locales.value = navigator.languages.join(", ");
             el.form.datetime.value = new Date().toLocaleString();
-            
+
             function handleFormSubmit(e) {
 
                 e.preventDefault();
-                const locales = el.locales.value;
-                const datetime = el.datetime.value;
-                el.formatted.textContent = new Intl.DateTimeFormat(locales).format(new Date(datetime));
+                const locales = el.locales.value.split(",").map(x => x.trim());
+                const datetime = new Date(el.datetime.value);
+                el.formatted.textContent = new Intl.DateTimeFormat(localess).format(datetime);
 
             }
 
