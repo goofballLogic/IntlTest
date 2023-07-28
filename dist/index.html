@@ -72,8 +72,8 @@
             function handleFormSubmit(e) {
 
                 e.preventDefault();
-                const locales = form.locales.value;
-                const datetime = form.datetime.value;
+                const locales = el.locales.value;
+                const datetime = el.datetime.value;
                 el.formatted.textContent = new Intl.DateTimeFormat(locales).format(new Date(datetime));
 
             }
