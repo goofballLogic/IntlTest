@@ -113,9 +113,44 @@
         <form>
 
             <fieldset>
+
                 <input type="text" name="locales" placeholder="locales" />
                 <input type="text" name="datetime" placeholder="value" />
                 <button>Go</button>
+
+            </fieldset>
+            <fieldset>
+
+                <label>
+
+                    <span>dateStyle</span>
+                    <select name="dateStyle">
+
+                        <option></option>
+                        <option>full</option>
+                        <option>long</option>
+                        <option>>medium</option>
+                        <option>short</option>
+
+                    </select>
+
+                </label>
+                <label>
+
+                    <span>timeStyle</span>
+                    <select name="timeStyle">
+
+                        <option></option>
+                        <option>full</option>
+                        <option>long</option>
+                        <option>>medium</option>
+                        <option>short</option>
+
+                    </select>
+
+                </label>
+
+
             </fieldset>
             <fieldset>
 
@@ -247,6 +282,31 @@
 
                 <label>
 
+                    <span>calendar</span>
+                    <select name="calendar">
+                        <option>buddhist</option>
+                        <option>chinese</option>
+                        <option>coptic</option>
+                        <option>dangi</option>
+                        <option>ethioaa</option>
+                        <option>ethiopic</option>
+                        <option>gregory</option>
+                        <option>hebrew</option>
+                        <option>indian</option>
+                        <option>islamic</option>
+                        <option>islamic-umalqura</option>
+                        <option>islamic-tbla</option>
+                        <option>islamic-civil</option>
+                        <option>islamic-rgsa</option>
+                        <option>iso8601</option>
+                        <option>japanese</option>
+                        <option>persian</option>
+                        <option>roc</option>
+                    </select>
+
+                </label>
+                <label>
+
                     <span>era</span>
                     <select name="era">
 
@@ -305,7 +365,10 @@
             options_weekday: "form select[name=weekday]",
             options_fractionalSecondDigits: "form select[name=fractionalSecondDigits]",
             options_era: "form select[name=era]",
-            options_timeZoneName: "form select[name=timeZoneName]"
+            options_timeZoneName: "form select[name=timeZoneName]",
+            options_dateStyle: "form select[name=dateStyle]",
+            options_timeStyle: "form select[name=timeStyle]",
+            options_calendar: "form select[name=calendar]"
 
         }).reduce((el, [key, value]) => ({ ...el, [key]: document.querySelector(value) }), {});
 
@@ -329,7 +392,7 @@
                 ${Object.entries(el)
                     .filter(([key]) => key.startsWith("options_"))
                     .map(([name, field]) => [
-                        name.substring(8), 
+                        name.substring(8),
                         field.value
                     ])
                     .filter(([, value]) => !!value)
