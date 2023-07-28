@@ -82,7 +82,7 @@
                 e.preventDefault();
                 const locales = el.locales.value.split(",").map(x => x.trim());
                 const datetime = new Date(el.datetime.value);
-                el.formatted.textContent = new Intl.DateTimeFormat(localess).format(datetime);
+                el.formatted.textContent = new Intl.DateTimeFormat(locales).format(datetime);
 
             }
 
