@@ -101,6 +101,16 @@
             margin-right: 0.5rem;
 
         }
+
+        form.error #errors::before {
+
+            content: "!";
+            font-weight: bolder;
+            background-color: red;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            
+        }
     </style>
 
 </head>
@@ -423,10 +433,13 @@
                         el.parts.innerHTML += `${key}: ${part[key]}<br />`;
 
                 });
+
+                el.form.classList.remove("error");
                 el.errors.textContent = "";
 
             } catch (err) {
 
+                el.form.classList.add("error");
                 el.errors.textContent = err.stack;
 
             }
