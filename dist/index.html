@@ -1,92 +1,110 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-    
-    <head>
-    
-        <title>Test Intl</title>
-        <style>
 
-            * {
-                font-family: Arial;
-                box-sizing: border-box;
-                font-weight: lighter;
-            }
+<head>
 
-            body {
+    <title>Test Intl</title>
+    <style>
+        * {
+            font-family: Arial;
+            box-sizing: border-box;
+            font-weight: lighter;
+        }
 
-                display: flex;
-                flex-direction: column;
-                gap: 1px;
-                background-color: blue;
-                min-height: 100vh;
-                margin: 0;
+        body {
 
-            }
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background-color: blue;
+            min-height: 100vh;
+            margin: 0;
 
-            header, main, footer {
-                
-                background-color: white;
-                padding: 10px;
+        }
 
-            }
+        header,
+        main,
+        footer {
 
-            main {
+            background-color: white;
+            padding: 10px;
 
-                flex: 1;
+        }
 
-            }
+        main {
 
+            flex: 1;
 
-        </style>
-    
-    </head>
-    <body>
+        }
 
-        <header>Test Intl</header>
-        <main>
+        form {
+
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+        }
+
+        form output {
             
-            <form>
-                <input type="text" name="locales" placeholder="locales" />
-                <input type="text" name="datetime" placeholder="value" />
-                <button>Go</button>
-                <output id="formatted" />
-                
-            </form>
-        </main>
-        <footer>
-            2023
-        </footer>
+            margin: 10px;
+            border-radius: 1px;
+            padding: 10px;
+            background-color: #EEE;
 
-        <script>
+        }
+    </style>
 
-            const el = {
+</head>
 
-                form: "form",
-                locales: "form [name=locales]",
-                datetime: "form [name=datetime]",
-                formatted: "form #formatted"
+<body>
 
-            };
-            Object.entries(el).forEach(([key, value]) => {
+    <header>Test Intl</header>
+    <main>
 
-                el[key] = document.querySelector(value);
+        <form>
 
-            });
-            
-            el.form.addEventListener("submit", handleFormSubmit);
-            el.form.locales.value = navigator.languages.join(", ");
-            el.form.datetime.value = new Date().toString();
+            <input type="text" name="locales" placeholder="locales" />
+            <input type="text" name="datetime" placeholder="value" />
+            <button>Go</button>
+            <output id="formatted" />
 
-            function handleFormSubmit(e) {
+        </form>
+    </main>
+    <footer>
+        2023
+    </footer>
 
-                e.preventDefault();
-                const locales = el.locales.value.split(",").map(x => x.trim());
-                const datetime = new Date(el.datetime.value);
-                el.formatted.textContent = new Intl.DateTimeFormat(locales).format(datetime);
+    <script>
 
-            }
+        const el = {
 
-        </script>
-    </body>
+            form: "form",
+            locales: "form [name=locales]",
+            datetime: "form [name=datetime]",
+            formatted: "form #formatted"
+
+        };
+        Object.entries(el).forEach(([key, value]) => {
+
+            el[key] = document.querySelector(value);
+
+        });
+
+        el.form.addEventListener("submit", handleFormSubmit);
+        el.form.locales.value = navigator.languages.join(", ");
+        el.form.datetime.value = new Date().toString();
+
+        function handleFormSubmit(e) {
+
+            e.preventDefault();
+            const locales = el.locales.value.split(",").map(x => x.trim());
+            const datetime = new Date(el.datetime.value);
+            el.formatted.textContent = new Intl.DateTimeFormat(locales).format(datetime);
+
+        }
+
+    </script>
+</body>
 
 </html>
