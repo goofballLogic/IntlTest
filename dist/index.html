@@ -325,7 +325,7 @@
             const locales = el.locales.value.split(",").map(x => x.trim());
             const datetime = new Date(el.datetime.value);
             const options = Object.fromEntries(
-                Object.entries()
+                Object.entries(el)
                     .filter(([key]) => key.startsWith("option_"))
                     .map(([name, field]) => [name, field])
             );
