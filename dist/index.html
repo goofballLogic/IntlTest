@@ -54,6 +54,7 @@
 
         form output {
             
+            margin-top: 10px;
             border-radius: 1px;
             padding: 10px;
             background-color: #EEE;
@@ -101,7 +102,7 @@
 
         el.form.addEventListener("submit", handleFormSubmit);
         el.form.locales.value = navigator.languages.join(", ");
-        el.form.datetime.value = new Date().toString();
+        el.form.datetime.value = new Date().toISOString();
 
         function handleFormSubmit(e) {
 
