@@ -46,8 +46,8 @@
         <main>
             
             <form>
-                <input type="text" name="locales" />
-                <input type="text" name="datetime" />
+                <input type="text" name="locales" placeholder="locales" />
+                <input type="text" name="datetime" placeholder="value" />
                 <button>Go</button>
                 <output id="formatted" />
                 
@@ -74,7 +74,9 @@
             });
             
             el.form.addEventListener("submit", handleFormSubmit);
-
+            el.form.locales.value = navigator.languages.join(", ");
+            el.form.datetime.value = new Date().toLocaleString();
+            
             function handleFormSubmit(e) {
 
                 e.preventDefault();
