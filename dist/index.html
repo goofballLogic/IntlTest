@@ -53,7 +53,7 @@
         }
 
         form output {
-            
+
             margin-top: 10px;
             border-radius: 1px;
             padding: 10px;
@@ -62,6 +62,12 @@
             min-height: 5rem;
 
         }
+
+        label > span {
+            display: block;
+            width: 20em;
+        }
+        
     </style>
 
 </head>
@@ -75,9 +81,8 @@
 
             <input type="text" name="locales" placeholder="locales" />
             <input type="text" name="datetime" placeholder="value" />
-            
             <label>
-                era
+                <span>era</span>
                 <select name="era">
                     <option></option>
                     <option>narrow</option>
@@ -86,7 +91,7 @@
                 </select>
             </label>
             <label>
-                year
+                <span>year</span>
                 <select name="year">
                     <option></option>
                     <option>2-digit</option>
@@ -94,7 +99,7 @@
                 </select>
             </label>
             <label>
-                month
+                <span>month</span>
                 <select name="month">
                     <option></option>
                     <option>2-digit</option>
@@ -105,7 +110,7 @@
                 </select>
             </label>
             <label>
-                day
+                <span>day</span>
                 <select name="day">
                     <option></option>
                     <option>2-digit</option>
@@ -113,7 +118,7 @@
                 </select>
             </label>
             <label>
-                day
+                <span>day</span>
                 <select name="dayPeriod">
                     <option></option>
                     <option>narrow</option>
@@ -122,7 +127,7 @@
                 </select>
             </label>
             <label>
-                weekday
+                <span>weekday</span>
                 <select name="weekday">
                     <option></option>
                     <option>narrow</option>
@@ -131,7 +136,7 @@
                 </select>
             </label>
             <label>
-                hour
+                <span>hour</span>
                 <select name="hour">
                     <option></option>
                     <option>2-digit</option>
@@ -139,7 +144,7 @@
                 </select>
             </label>
             <label>
-                minute
+                <span>minute</span>
                 <select name="minute">
                     <option></option>
                     <option>2-digit</option>
@@ -147,7 +152,7 @@
                 </select>
             </label>
             <label>
-                second
+                <span>second</span>
                 <select name="second">
                     <option></option>
                     <option>2-digit</option>
@@ -155,7 +160,7 @@
                 </select>
             </label>
             <label>
-                fractionalSecondDigits
+                <span>fractionalSecondDigits</span>
                 <select name="fractionalSecondDigits">
                     <option></option>
                     <option>1</option>
@@ -164,7 +169,7 @@
                 </select>
             </label>
             <label>
-                timeZoneName
+                <span>timeZoneName</span>
                 <select name="timeZoneName">
                     <option></option>
                     <option>short</option>
@@ -209,7 +214,7 @@
             execute();
 
         }
-        
+
         function execute() {
 
             const locales = el.locales.value.split(",").map(x => x.trim());
@@ -220,11 +225,11 @@
             el.parts.innerHTML = "";
             parts.forEach(part => {
 
-                for(const key in part)
+                for (const key in part)
                     el.parts.innerHTML += `${key}: ${part[key]}<br />`;
 
             });
-        
+
         }
 
         execute();
