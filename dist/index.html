@@ -38,12 +38,46 @@
 
         <header>Test Intl</header>
         <main>
-            main
+            
+            <form>
+                <input type="text" name="locales" />
+                <input type="text" name="datetime" />
+
+                <output id="formatted" />
+            </form>
         </main>
         <footer>
             2023
         </footer>
 
+        <script>
+
+            const el = {
+
+                form: "form",
+                locales: "form [name=locales]",
+                datetime: "form [name=datetime]",
+                formatted: "form #formatted"
+
+            };
+            Object.entries(el).forEach(([key, value]) => {
+
+                el[key] = document.querySelector(value);
+
+            });
+            
+            el.form.addEventListener("submit", handleFormSubmit);
+
+            function handleFormSubmit(e) {
+
+                e.preventDefault();
+                const locales = form.locales.value;
+                const datetime = form.datetime.value;
+                el.formatted.textContent = new Intl.DateTimeFormat(locales).format(new Date(datetime));
+
+            }
+
+        </script>
     </body>
 
 </html>
