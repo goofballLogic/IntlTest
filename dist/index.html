@@ -98,6 +98,7 @@
         label>span {
 
             width: 10rem;
+            margin-right: 0.5rem;
 
         }
     </style>
@@ -157,6 +158,10 @@
                     </select>
 
                 </label>
+            
+            </fieldset>
+            <fieldset>
+                
                 <label>
 
                     <span>hour</span>
@@ -198,19 +203,6 @@
             <fieldset>
             
                 <label>
-
-                    <span>era</span>
-                    <select name="era">
-
-                        <option></option>
-                        <option>narrow</option>
-                        <option>short</option>
-                        <option>long</option>
-
-                    </select>
-
-                </label>
-                <label>
             
                     <span>dayPeriod</span>
                     <select name="dayPeriod">
@@ -249,6 +241,23 @@
                     </select>
                 
                 </label>
+
+            </fieldset>
+            <fieldset>
+
+                <label>
+
+                    <span>era</span>
+                    <select name="era">
+
+                        <option></option>
+                        <option>narrow</option>
+                        <option>short</option>
+                        <option>long</option>
+
+                    </select>
+
+                </label>
                 <label>
                 
                     <span>timeZoneName</span>
@@ -265,7 +274,7 @@
                     </select>
                 
                 </label>
-            
+
             </fieldset>
             <output id="formatted"></output>
             <output id="parts"></output>
