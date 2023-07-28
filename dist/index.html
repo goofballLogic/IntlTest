@@ -327,13 +327,15 @@
             const optionsText = `{
                 ${Object.entries(el)
                     .filter(([key]) => key.startsWith("options_"))
-                    .map(([name, field]) => `${name}: "${field}"`)
+                    .map(([name, field]) => [name, field.value])
+                    .filter(([, value]) => !!value)
+                    .map(([name, value]) => `${name}: "${value}"`)
                     .join(",\n")
                 }
             }`;
 
             console.log(optionsText);
-            const options = eval(optionsText); 
+            const options = eval(optionsText);
             const format = Intl.DateTimeFormat(locales, options);
             el.formatted.textContent = format.format(datetime);
             const parts = format.formatToParts(datetime);
