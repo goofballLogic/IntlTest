@@ -327,7 +327,10 @@
             const optionsText = `{
                 ${Object.entries(el)
                     .filter(([key]) => key.startsWith("options_"))
-                    .map(([name, field]) => [name, field.value])
+                    .map(([name, field]) => [
+                        name.substring(8), 
+                        field.value
+                    ])
                     .filter(([, value]) => !!value)
                     .map(([name, value]) => `${name}: "${value}"`)
                     .join(",\n")
