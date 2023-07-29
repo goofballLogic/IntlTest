@@ -436,20 +436,15 @@
 
                 const locales = el.locales.value.split(",").map(x => x.trim());
                 const datetime = new Date(el.datetime.value);
-                const optionsText = [
-                    "{",
-                    ...Object.entries(el)
+                const keyValues = Object.entries(el)
                         .filter(([key]) => key.startsWith("options_"))
                         .map(([name, field]) => [
                             name.substring(8),
                             field.value
                         ])
                         .filter(([, value]) => !!value)
-                        .map(([name, value]) => `${name}: "${value}"`),
-                    "}"
-                ]
-                    .join(",\n")
-                    .replace(/^\W*/g, "");
+                        .map(([name, value]) => `${name}: "${value}"`);
+                const optionsText = `{${keyValues}}`;
 
                 el.code.textContent = optionsText;
                 const options = eval(`(${optionsText})`);
