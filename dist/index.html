@@ -408,8 +408,8 @@
                     ])
                     .filter(([, value]) => !!value)
                     .map(([name, value]) => `   ${name}: "${value}"`);
-                const optionsText = `{\n${keyValues.join(",\n")}\n};`;
-                const code = `const options = ${optionsText}\nconst formatter = Intl.DateTimeFormat(${JSON.stringify(locales)}, options);\nconst formatted = formatter.format(new Date());` 
+                const optionsText = `{\n${keyValues.join(",\n")}\n}`;
+                const code = `const options = ${optionsText};\nconst formatter = Intl.DateTimeFormat(${JSON.stringify(locales)}, options);\nconst formatted = formatter.format(new Date());` 
                 el.code.textContent = code;
                 const options = eval(`(${optionsText})`);
                 const format = Intl.DateTimeFormat(locales, options);
