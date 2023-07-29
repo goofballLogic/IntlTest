@@ -408,7 +408,7 @@
                     ])
                     .filter(([, value]) => !!value)
                     .map(([name, value]) => `   ${name}: "${value}"`);
-                const optionsText = `{\n${keyValues.join(",\n")}\n}`;
+                const optionsText = keyValues.length ? `{\n${keyValues.join(",\n")}\n}` : "{}";
                 const code = [
                     `const options = ${optionsText};`,
                     `const locales = ${JSON.stringify(locales)};`,
