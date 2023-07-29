@@ -415,7 +415,8 @@
                     `const formatter = Intl.DateTimeFormat(locales, options);`,
                     `const formatted = formatter.format(new Date());`,
                     `const parts = formatter.formatToParts(new Date());`
-                ].join("\n"); 
+                ].join("\n");
+                console.log(code); 
                 el.code.textContent = code;
                 const options = eval(`(${optionsText})`);
                 const format = Intl.DateTimeFormat(locales, options);
