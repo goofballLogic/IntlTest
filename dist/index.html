@@ -411,7 +411,7 @@
                 const optionsText = `{\n${keyValues.join(",\n")}\n}`;
                 const code = [
                     `const options = ${optionsText};`,
-                    `const locales = ${JSON.stringify(locales)};`
+                    `const locales = ${JSON.stringify(locales)};`,
                     `const formatter = Intl.DateTimeFormat(locales, options);`,
                     `const formatted = formatter.format(new Date());`,
                     `const parts = formatter.formatToParts(new Date());`
