@@ -101,6 +101,9 @@
         output#errors {
 
             background-color: initial;
+            display: flex;
+            align-items: center;
+            min-height: 2.5rem;
 
         }
 
@@ -128,7 +131,7 @@
 <body>
 
     <header>
-        
+
         <img src="favicon.png" />
         <h1>Test Intl</h1>
 
@@ -426,14 +429,14 @@
                 const datetime = new Date(el.datetime.value);
                 const optionsText = `{
                     ${Object.entries(el)
-                            .filter(([key]) => key.startsWith("options_"))
-                            .map(([name, field]) => [
-                                name.substring(8),
-                                field.value
-                            ])
-                            .filter(([, value]) => !!value)
-                            .map(([name, value]) => `${name}: "${value}"`)
-                            .join(",\n")}
+                        .filter(([key]) => key.startsWith("options_"))
+                        .map(([name, field]) => [
+                            name.substring(8),
+                            field.value
+                        ])
+                        .filter(([, value]) => !!value)
+                        .map(([name, value]) => `${name}: "${value}"`)
+                        .join(",\n")}
                 }`;
 
                 el.code.textContent = optionsText;
