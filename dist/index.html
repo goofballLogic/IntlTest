@@ -444,7 +444,7 @@
                         ])
                         .filter(([, value]) => !!value)
                         .map(([name, value]) => `   ${name}: "${value}"`);
-                const optionsText = `{\n   ${keyValues.join(",\n")}\n}`;
+                const optionsText = `{\n${keyValues.join(",\n")}\n}`;
 
                 el.code.textContent = optionsText;
                 const options = eval(`(${optionsText})`);
