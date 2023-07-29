@@ -86,10 +86,10 @@
 
             flex: 0 0 50%;
             border-radius: 2px;
-            padding: 10px;
+            padding: 1rem;
             background-color: #EEE;
             min-width: 50%;
-            min-height: 5rem;
+            min-height: 1rem;
 
         }
 
@@ -379,7 +379,7 @@
             </fieldset>
             <output id="errors"></output>
             <output id="formatted"></output>
-            <output id="parts"></output>
+            <ol id="parts"></ol>
             <pre id="code"></pre>
 
         </form>
@@ -437,13 +437,13 @@
                 const locales = el.locales.value.split(",").map(x => x.trim());
                 const datetime = new Date(el.datetime.value);
                 const keyValues = Object.entries(el)
-                        .filter(([key]) => key.startsWith("options_"))
-                        .map(([name, field]) => [
-                            name.substring(8),
-                            field.value
-                        ])
-                        .filter(([, value]) => !!value)
-                        .map(([name, value]) => `   ${name}: "${value}"`);
+                    .filter(([key]) => key.startsWith("options_"))
+                    .map(([name, field]) => [
+                        name.substring(8),
+                        field.value
+                    ])
+                    .filter(([, value]) => !!value)
+                    .map(([name, value]) => `   ${name}: "${value}"`);
                 const optionsText = `{\n${keyValues.join(",\n")}\n}`;
 
                 el.code.textContent = optionsText;
@@ -451,14 +451,9 @@
                 const format = Intl.DateTimeFormat(locales, options);
                 el.formatted.textContent = format.format(datetime);
                 const parts = format.formatToParts(datetime);
-                el.parts.innerHTML = "";
-                parts.forEach(part => {
-
-                    for (const key in part)
-                        el.parts.innerHTML += `${key}: ${part[key]}<br />`;
-
-                });
-
+                el.parts.innerHTML = parts
+                    .map(({ type, value }) => `<li>${type}: ${value}</li>`)
+                    .join("\n");
                 el.form.classList.remove("error");
                 el.errors.textContent = "";
 
