@@ -399,7 +399,7 @@
                     ])
                     .filter(([, value]) => !!value)
                     .map(([name, value]) => `   ${name}: "${value}"`);
-                const optionsText = `Intl.DateTimeFormat({\n${keyValues.join(",\n")}\n});`;
+                const optionsText = `const formatter = Intl.DateTimeFormat({\n${keyValues.join(",\n")}\n});\nconst formatted = formatter.format(new Date());`;
 
                 el.code.textContent = optionsText;
                 const options = eval(`(${optionsText})`);
