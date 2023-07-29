@@ -398,6 +398,12 @@
 
             try {
 
+                el.form.classList.remove("error");
+                el.errors.textContent = "";
+                el.code.textContent = "";
+                el.formatted.textContent = "";
+                el.parts.innerHTML = "";
+
                 const locales = el.locales.value.split(",").map(x => x.trim());
                 const datetime = new Date(el.datetime.value);
                 const keyValues = Object.entries(el)
@@ -425,8 +431,6 @@
                 el.parts.innerHTML = parts
                     .map(({ type, value }) => `<li>${type}: ${value}</li>`)
                     .join("\n");
-                el.form.classList.remove("error");
-                el.errors.textContent = "";
 
             } catch (err) {
 
