@@ -97,7 +97,7 @@
             border-radius: 2px;
 
         }
-        
+
     </style>
 
 </head>
@@ -408,9 +408,9 @@
                     ])
                     .filter(([, value]) => !!value)
                     .map(([name, value]) => `   ${name}: "${value}"`);
-                const optionsText = `const formatter = Intl.DateTimeFormat({\n${keyValues.join(",\n")}\n});\nconst formatted = formatter.format(new Date());`;
-
-                el.code.textContent = optionsText;
+                const optionsText = `const options = {\n${keyValues.join(",\n")}\n};`;
+                const code = `const formatter = Intl.DateTimeFormat(${JSON.stringify(locales)}, options);\nconst formatted = formatter.format(new Date());` 
+                el.code.textContent = code;
                 const options = eval(`(${optionsText})`);
                 const format = Intl.DateTimeFormat(locales, options);
                 el.formatted.textContent = format.format(datetime);
