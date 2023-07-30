@@ -580,6 +580,7 @@
                         <option>Pacific/Wake</option>
                         <option>Pacific/Wallis</option>
                     </select>
+
                 </label>
                 <label>
 
@@ -609,6 +610,17 @@
                         <option>thai</option>
                         <option>tibt</option>
                     </select>
+
+                </label>
+                <label>
+
+                    <span></span>
+                    <select name="hour12">
+                        <option></option>
+                        <option>true</option>
+                        <option>false</option>
+                    </select>
+
                 </label>
 
             </fieldset>
@@ -838,7 +850,8 @@
             options_timeStyle: "form select[name=timeStyle]",
             options_calendar: "form select[name=calendar]",
             options_timeZone: "form select[name=timeZone]",
-            options_numberingSystem: "form select[name=numberingSystem]"
+            options_numberingSystem: "form select[name=numberingSystem]",
+            options_hour12: "form select[name=hour12]"
 
         }).reduce((el, [key, value]) => ({ ...el, [key]: document.querySelector(value) }), {});
 
@@ -873,6 +886,7 @@
                         field.value
                     ])
                     .filter(([, value]) => !!value)
+                    .map(([, value]) => value === "true" ? true : value === "false" ? false : value)
                     .map(([name, value]) => `   ${name}: "${value}"`);
                 const optionsText = keyValues.length ? `{\n${keyValues.join(",\n")}\n}` : "{}";
                 const code = [
