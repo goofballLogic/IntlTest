@@ -614,7 +614,7 @@
                 </label>
                 <label>
 
-                    <span></span>
+                    <span>hour12</span>
                     <select name="hour12">
                         <option></option>
                         <option>true</option>
@@ -886,7 +886,7 @@
                         field.value
                     ])
                     .filter(([, value]) => !!value)
-                    .map(([, value]) => value === "true" ? true : value === "false" ? false : value)
+                    .map(([name, value]) => [name, value === "true" ? true : value === "false" ? false : value])
                     .map(([name, value]) => `   ${name}: "${value}"`);
                 const optionsText = keyValues.length ? `{\n${keyValues.join(",\n")}\n}` : "{}";
                 const code = [
