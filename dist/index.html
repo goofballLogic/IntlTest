@@ -887,7 +887,7 @@
                     ])
                     .filter(([, value]) => !!value)
                     .map(([name, value]) => [name, value === "true" ? true : value === "false" ? false : value])
-                    .map(([name, value]) => `   ${name}: ${typeof value === "string" ? "${value}" : "${value}"}`);
+                    .map(([name, value]) => `   ${name}: ${typeof value === "string" ? `"${value}"` : `${value}`}`);
                 const optionsText = keyValues.length ? `{\n${keyValues.join(",\n")}\n}` : "{}";
                 const code = [
                     `const options = ${optionsText};`,
