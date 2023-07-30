@@ -581,6 +581,34 @@
                         <option>Pacific/Wallis</option>
                     </select>
                 </label>
+                <label>
+
+                    <span>numberingSystem</span>
+                    <select name="numberingSystem">
+                        <option>arab</option>
+                        <option>arabext</option>
+                        <option>bali</option>
+                        <option>beng</option>
+                        <option>deva</option>
+                        <option>fullwide</option>
+                        <option>gujr</option>
+                        <option>guru</option>
+                        <option>hanidec</option>
+                        <option>khmr</option>
+                        <option>knda</option>
+                        <option>laoo</option>
+                        <option>latn</option>
+                        <option>limb</option>
+                        <option>mlym</option>
+                        <option>mong</option>
+                        <option>mymr</option>
+                        <option>orya</option>
+                        <option>tamldec</option>
+                        <option>telu</option>
+                        <option>thai</option>
+                        <option>tibt</option>
+                    </select>
+                </label>
 
             </fieldset>
             <fieldset>
@@ -808,7 +836,8 @@
             options_dateStyle: "form select[name=dateStyle]",
             options_timeStyle: "form select[name=timeStyle]",
             options_calendar: "form select[name=calendar]",
-            options_timeZone: "form select[name=timeZone]"
+            options_timeZone: "form select[name=timeZone]",
+            options_numberingSystem: "form select[name=numberingSystem]"
 
         }).reduce((el, [key, value]) => ({ ...el, [key]: document.querySelector(value) }), {});
 
