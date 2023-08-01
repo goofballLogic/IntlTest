@@ -622,6 +622,20 @@
                     </select>
 
                 </label>
+                <label>
+
+                    <span>hourCycle</span>
+                    <select name="hourCycle">
+
+                        <option></option>
+                        <option>h11</option>
+                        <option>h12</option>
+                        <option>h23</option>
+                        <option>h24</option>
+
+                    </select>
+                    
+                </label>
 
             </fieldset>
             <fieldset>
@@ -851,7 +865,8 @@
             options_calendar: "form select[name=calendar]",
             options_timeZone: "form select[name=timeZone]",
             options_numberingSystem: "form select[name=numberingSystem]",
-            options_hour12: "form select[name=hour12]"
+            options_hour12: "form select[name=hour12]",
+            options_hourCycle: "form select[name=hourCycle]"
 
         }).reduce((el, [key, value]) => ({ ...el, [key]: document.querySelector(value) }), {});
 
