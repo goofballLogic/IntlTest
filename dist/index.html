@@ -69,9 +69,9 @@
         }
 
         #pane1 label {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+           float:left;
+           line-height: 2rem;
+           margin-right: 1rem;
         }
 
         #errors {
@@ -205,13 +205,11 @@
         <form>
 
             <section id="pane1">
-                <label>
-                    <span>Date and time</span>
-                    <input type="text" name="datetime" placeholder="value" />
-                </label>
+
+                <label for="datetime">Date and time</label>
+                <input type="text" id="datetime" name="datetime" />
                 <output id="errors"></output>
                 <output id="formatted"></output>
-
                 <pre><code class="language-js" id="code"></code><small>javascript</small></pre>
                 <ol id="parts"></ol>
 
